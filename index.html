@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наукові конференції — Архів афіш</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo" onclick="showHome(); return false;">
+                <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
+                    <path d="M4 28 Q10 12 16 28" stroke="white" stroke-width="2.5" fill="none"/>
+                    <path d="M12 28 Q18 12 24 28" stroke="white" stroke-width="2.5" fill="none"/>
+                    <path d="M20 28 Q26 12 32 28" stroke="white" stroke-width="2.5" fill="none"/>
+                </svg>
+                <span>Наукові конференції</span>
+            </a>
+            <nav class="nav">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div class="sidebar-overlay hidden" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span>Меню</span>
+            <button class="sidebar-close" onclick="toggleSidebar()">&times;</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-link" onclick="showHome(); toggleSidebar(); return false;">Головна сторінка</a>
+            <a href="#" class="sidebar-link" onclick="showPage('programsPage'); toggleSidebar(); return false;">Програми</a>
+            <a href="#" class="sidebar-link" onclick="showPage('polozhennyaPage'); toggleSidebar(); return false;">Положення</a>
+
+            <div class="sidebar-group">
+                <button class="sidebar-toggle" onclick="toggleGroup(this)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    Сертифікати студентів
+                </button>
+                <div class="sidebar-submenu">
+                    <a href="#">2023</a>
+                    <a href="#">2024</a>
+                    <a href="#">2025</a>
+                    <a href="#">2026</a>
+                </div>
+            </div>
+
+            <div class="sidebar-group">
+                <button class="sidebar-toggle" onclick="toggleGroup(this)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    Сертифікати орг.комітету
+                </button>
+                <div class="sidebar-submenu">
+                    <a href="#">2024</a>
+                    <a href="#">2025</a>
+                    <a href="#">2026</a>
+                </div>
+            </div>
+
+            <div class="sidebar-group">
+                <button class="sidebar-toggle" onclick="toggleGroup(this)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    Сертифікати викладачів
+                </button>
+                <div class="sidebar-submenu">
+                    <a href="#">2023</a>
+                    <a href="#">2024</a>
+                    <a href="#">2025</a>
+                    <a href="#">2026</a>
+                </div>
+            </div>
+
+            <div class="sidebar-group">
+                <button class="sidebar-toggle" onclick="toggleGroup(this)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    Сертифікати слухачів
+                </button>
+                <div class="sidebar-submenu">
+                    <a href="#">2023</a>
+                    <a href="#">2024</a>
+                    <a href="#">2025</a>
+                    <a href="#">2026</a>
+                </div>
+            </div>
+
+            <a href="#" class="sidebar-link">Збірники</a>
+            <a href="#" class="sidebar-link">Інформаційний лист</a>
+
+            <div class="sidebar-group">
+                <button class="sidebar-toggle" onclick="toggleGroup(this)">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    Фотогалерея
+                </button>
+                <div class="sidebar-submenu">
+                    <a href="#">2023</a>
+                    <a href="#">2024</a>
+                    <a href="#">2025</a>
+                    <a href="#">2026</a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Page -->
+    <main id="mainPage">
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="hero-inner">
+            <h1 class="hero-title">Архів афіш</h1>
+            <p class="hero-subtitle">наукових конференцій Вінниці</p>
+            <p class="hero-desc">Збирай знання. Досліджуй ідеї. Надихай майбутнє.</p>
+            <a href="#" class="register-btn" onclick="openRegistration(); return false;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+                </svg>
+                Зареєструватися на конференцію
+            </a>
+          </div>
+        </section>
+
+        <!-- Slider -->
+        <section class="slider" id="slider">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slide">
+                    <img class="slide-bg" src="slides/slide1.jpg" alt="">
+                    <img class="slide-main" src="slides/slide1.jpg" alt="Слайд 1">
+                </div>
+                <div class="slide">
+                    <img class="slide-bg" src="slides/slide2.jpg" alt="">
+                    <img class="slide-main" src="slides/slide2.jpg" alt="Слайд 2">
+                </div>
+                <div class="slide">
+                    <img class="slide-bg" src="slides/slide3.jpg" alt="">
+                    <img class="slide-main" src="slides/slide3.jpg" alt="Слайд 3">
+                </div>
+                <div class="slide">
+                    <img class="slide-bg" src="slides/slide4.jpg" alt="">
+                    <img class="slide-main" src="slides/slide4.jpg" alt="Слайд 4">
+                </div>
+                <div class="slide">
+                    <img class="slide-bg" src="slides/slide5.jpg" alt="">
+                    <img class="slide-main" src="slides/slide5.jpg" alt="Слайд 5">
+                </div>
+            </div>
+            <button class="slider-btn slider-prev" onclick="changeSlide(-1)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="slider-btn slider-next" onclick="changeSlide(1)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+            <div class="slider-dots" id="sliderDots">
+                <button class="dot active" onclick="goToSlide(0)"></button>
+                <button class="dot" onclick="goToSlide(1)"></button>
+                <button class="dot" onclick="goToSlide(2)"></button>
+                <button class="dot" onclick="goToSlide(3)"></button>
+                <button class="dot" onclick="goToSlide(4)"></button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Programs Page -->
+    <main id="programsPage" class="hidden">
+        <div class="page-container">
+            <a href="#" class="back-link" onclick="showHome(); return false;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Назад
+            </a>
+            <h1 class="page-title">Програми</h1>
+            <div class="doc-grid">
+                <a href="https://drive.google.com/file/d/1SQc34T_H7GbYmhbh-6OA0Nqe0bXwhyRV/view" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>ПРОГРАМА 2018 року</h3>
+                    <span class="doc-type">.docx</span>
+                </a>
+                <a href="https://drive.google.com/file/d/16QRQr_nfH8VLGS9qumE3RFxFqM75M5jI/view" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>ПРОГРАМА 2019 року</h3>
+                    <span class="doc-type">.docx</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1N-B531XXOos0n_CWkuep_nzjzYwnKIRc/view" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>ПРОГРАМА 2020 року</h3>
+                    <span class="doc-type">.docx</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1dd7z9im4HURaFM3Vq1QqIFG2w4EWZjbJ/view" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>ПРОГРАМА 2021 року</h3>
+                    <span class="doc-type">.docx</span>
+                </a>
+                <a href="https://drive.google.com/file/d/11MG5bQr3oxeNbA9Ta6pIFj5gch7yNlPh/view" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>ПРОГРАМА 2023 року</h3>
+                    <span class="doc-type">.docx</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1P4eR20CDP03x9aSXFun-D_uTpWmtiGED/view" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>ПРОГРАМА 2024 року</h3>
+                    <span class="doc-type">.docx</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1u4xXd7tRf04Fm1UbT7JqWtBwDpbaa6PG/view" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>ПРОГРАМА 2025 року</h3>
+                    <span class="doc-type">.docx</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1iixl9tkIVrobAqN4uDBHLiBOuR3iT4MS/view" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>ПРОГРАМА 2026 року</h3>
+                    <span class="doc-type">.docx</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Polozhennya Page -->
+    <main id="polozhennyaPage" class="hidden">
+        <div class="page-container">
+            <a href="#" class="back-link" onclick="showHome(); return false;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Назад
+            </a>
+            <h1 class="page-title">Положення</h1>
+            <p class="page-subtitle">Про науково-практичну краєзнавчу конференцію «Моя Україна: історія та сьогодення»</p>
+            <div class="doc-grid doc-grid-single">
+                <a href="https://drive.google.com/file/d/1_euISKyCflYIv05pR-IAqoasKnXOSME4/view" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <h3>ПОЛОЖЕННЯ</h3>
+                    <span class="doc-type">.docx</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Detail Page -->
+    <main id="detailPage" class="hidden">
+        <div class="detail-container">
+            <a href="#" class="back-link" onclick="showHome(); return false;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Назад до архіву
+            </a>
+
+            <div class="detail-header">
+                <span class="detail-category" id="detailCategory"></span>
+                <h1 class="detail-title" id="detailTitle"></h1>
+                <p class="detail-subtitle" id="detailSubtitle"></p>
+            </div>
+
+            <div class="detail-content">
+                <div class="detail-left">
+                    <div class="poster-section">
+                        <h3>Афіша конференції</h3>
+                        <img id="detailPoster" src="" alt="Афіша">
+                    </div>
+
+                    <div class="desc-section">
+                        <h3>Опис</h3>
+                        <p id="detailDesc"></p>
+                    </div>
+
+                    <div class="keywords-section">
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                            </svg>
+                            Ключові слова
+                        </h3>
+                        <div class="keywords-list" id="detailKeywords"></div>
+                    </div>
+                </div>
+
+                <div class="detail-right">
+                    <div class="info-card">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            Дата проведення
+                        </h4>
+                        <p id="detailDate"></p>
+                    </div>
+                    <div class="info-card">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Місце проведення
+                        </h4>
+                        <p id="detailLocation"></p>
+                    </div>
+                    <div class="info-card">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 010 7.75"/>
+                            </svg>
+                            Автори
+                        </h4>
+                        <ul id="detailAuthors"></ul>
+                    </div>
+                    <div class="info-card">
+                        <h4>Організатор</h4>
+                        <p id="detailOrganizer"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeRegistration()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeRegistration()">&times;</button>
+            <h2>Реєстрація на конференцію</h2>
+            <p class="modal-subtitle">НАУКОВО - ПРАКТИЧНА КРАЄЗНАВЧА ВИКЛАДАЦЬКО-СТУДЕНТСЬКА КОНФЕРЕНЦІЯ «МОЯ УКРАЇНА: ІСТОРІЯ ТА СЬОГОДЕННЯ»</p>
+            <form id="regForm" onsubmit="submitRegistration(event)">
+                <div class="form-group">
+                    <label>ПІБ</label>
+                    <input type="text" required placeholder="Введіть ваше ПІБ">
+                </div>
+                <div class="form-group">
+                    <label>Статус</label>
+                    <select required>
+                        <option value="">Оберіть статус</option>
+                        <option value="student">Студент</option>
+                        <option value="teacher">Викладач</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Заклад освіти</label>
+                    <input type="text" required placeholder="Назва закладу">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="tel" required placeholder="+380...">
+                </div>
+                <div class="form-group">
+                    <label>Форма участі</label>
+                    <select required>
+                        <option value="">Оберіть форму</option>
+                        <option value="online">Заочна</option>
+                        <option value="offline">Очна</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Тема доповіді</label>
+                    <input type="text" required placeholder="Тема вашої доповіді">
+                </div>
+                <div class="form-group">
+                    <label>Анотація</label>
+                    <textarea required placeholder="Коротка анотація доповіді..." rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Зареєструватися</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Registration Success -->
+    <div id="regSuccess" class="modal hidden">
+        <div class="modal-overlay" onclick="closeSuccess()"></div>
+        <div class="modal-content success-content">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <h2>Реєстрація успішна!</h2>
+            <p>Ваша заявка прийнята. Очікуйте підтвердження на email.</p>
+            <button class="submit-btn" onclick="closeSuccess()">Закрити</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="#" class="logo" onclick="showHome(); return false;">
+                    <svg class="logo-icon" viewBox="0 0 40 40" width="32" height="32">
+                        <path d="M4 28 Q10 12 16 28" stroke="white" stroke-width="2.5" fill="none"/>
+                        <path d="M12 28 Q18 12 24 28" stroke="white" stroke-width="2.5" fill="none"/>
+                        <path d="M20 28 Q26 12 32 28" stroke="white" stroke-width="2.5" fill="none"/>
+                    </svg>
+                    <span>Наукові конференції</span>
+                </a>
+                <p class="footer-desc">Цифровий архів наукових заходів міста Вінниці</p>
+            </div>
+            <div class="footer-col">
+                <h4>Посилання</h4>
+                <a href="#">Про проект</a>
+                <a href="#" onclick="showHome(); return false;">Архів</a>
+                <a href="#">Контакти</a>
+            </div>
+            <div class="footer-col">
+                <h4>Контакти</h4>
+                <p>Вінниця, Україна</p>
+                <p>info@conferences.vn.ua</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Архів наукових конференцій. Всі права захищені.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
