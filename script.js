@@ -1,193 +1,278 @@
-const conferences = [
-    {
-        id: 1,
-        category: "Медицина",
-        title: "Квантові обчислення в медицині",
-        subtitle: "Нові горизонти діагностики",
-        desc: "Дослідження застосування квантових алгоритмів для ранньої діагностики онкологічних захворювань.",
-        date: "15 листопада 2025 р.",
-        fullDate: "субота, 15 листопада 2025 р.",
-        location: "Вінниця, Україна",
-        authors: ["Іванова О.М.", "Петренко В.І."],
-        organizer: "Вінницький національний медичний університет",
-        keywords: ["квантові обчислення", "медична діагностика", "онкологія"],
-        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop",
-        poster: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=1100&fit=crop"
-    },
-    {
-        id: 2,
-        category: "Агротехнології",
-        title: "Штучний інтелект в аграрному секторі",
-        subtitle: "Розумне землеробство майбутнього",
-        desc: "Впровадження систем машинного навчання для прогнозування та оптимізації врожайності.",
-        date: "20 вересня 2025 р.",
-        fullDate: "субота, 20 вересня 2025 р.",
-        location: "Вінниця, Україна",
-        authors: ["Коваленко А.П.", "Сидоренко Т.В."],
-        organizer: "Вінницький національний аграрний університет",
-        keywords: ["штучний інтелект", "агротехнології", "машинне навчання"],
-        image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=400&fit=crop",
-        poster: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=1100&fit=crop"
-    },
-    {
-        id: 3,
-        category: "Енергетика",
-        title: "Нанотехнології в енергетиці",
-        subtitle: "Ефективність нового покоління",
-        desc: "Розробка наноструктурованих матеріалів для підвищення ефективності сонячних панелей.",
-        date: "5 жовтня 2025 р.",
-        fullDate: "неділя, 5 жовтня 2025 р.",
-        location: "Вінниця, Україна",
-        authors: ["Бондаренко І.С.", "Мельник О.В."],
-        organizer: "Вінницький національний технічний університет",
-        keywords: ["нанотехнології", "сонячна енергетика", "матеріалознавство"],
-        image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop",
-        poster: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=1100&fit=crop"
-    },
-    {
-        id: 4,
-        category: "Інформаційні технології",
-        title: "Кібербезпека критичної інфраструктури",
-        subtitle: "Захист цифрового простору",
-        desc: "Аналіз сучасних методів криптографічного захисту в контексті кіберзагроз нового покоління.",
-        date: "12 серпня 2025 р.",
-        fullDate: "вівторок, 12 серпня 2025 р.",
-        location: "Вінниця, Україна",
-        authors: ["Ткаченко Д.О.", "Романюк Л.М."],
-        organizer: "Вінницький національний технічний університет",
-        keywords: ["кібербезпека", "криптографія", "інфраструктура"],
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
-        poster: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=1100&fit=crop"
-    },
-    {
-        id: 5,
-        category: "Біологія",
-        title: "Біоінформатика та геномні дослідження",
-        subtitle: "Розшифровка генетичного коду",
-        desc: "Використання big data для аналізу геномних послідовностей та персоналізованої медицини.",
-        date: "28 липня 2025 р.",
-        fullDate: "понеділок, 28 липня 2025 р.",
-        location: "Вінниця, Україна",
-        authors: ["Шевченко К.Б.", "Литвин Н.А."],
-        organizer: "Вінницький державний педагогічний університет",
-        keywords: ["біоінформатика", "геноміка", "big data"],
-        image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=600&h=400&fit=crop",
-        poster: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&h=1100&fit=crop"
-    },
-    {
-        id: 6,
-        category: "Екологія",
-        title: "Екологічний моніторинг міст",
-        subtitle: "Чисте повітря для кожного",
-        desc: "Створення розподіленої системи моніторингу якості повітря та води в урбанізованих територіях.",
-        date: "14 червня 2025 р.",
-        fullDate: "субота, 14 червня 2025 р.",
-        location: "Вінниця, Україна",
-        authors: ["Гриценко О.П.", "Федорчук В.С."],
-        organizer: "Вінницький національний технічний університет",
-        keywords: ["екологія", "моніторинг", "урбаністика"],
-        image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop",
-        poster: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&h=1100&fit=crop"
-    },
-    {
-        id: 7,
-        category: "Нейронаука",
-        title: "Нейронаука та когнітивні технології",
-        subtitle: "Мозок і машина",
-        desc: "Розробка неінвазивних BCI для реабілітації пацієнтів з неврологічними порушеннями.",
-        date: "3 грудня 2025 р.",
-        fullDate: "середа, 3 грудня 2025 р.",
-        location: "Вінниця, Україна",
-        authors: ["Козлова М.І.", "Дмитренко С.А."],
-        organizer: "Вінницький національний медичний університет",
-        keywords: ["нейронаука", "BCI", "реабілітація"],
-        image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=400&fit=crop",
-        poster: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=1100&fit=crop"
-    },
-    {
-        id: 8,
-        category: "Матеріалознавство",
-        title: "Матеріалознавство для космічної галузі",
-        subtitle: "Матеріали нового покоління",
-        desc: "Синтез та тестування нових композитних матеріалів для аерокосмічних застосувань.",
-        date: "22 травня 2025 р.",
-        fullDate: "четвер, 22 травня 2025 р.",
-        location: "Вінниця, Україна",
-        authors: ["Павленко Р.В.", "Кравчук Ю.О."],
-        organizer: "Вінницький національний технічний університет",
-        keywords: ["матеріалознавство", "композити", "аерокосмічна галузь"],
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
-        poster: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=1100&fit=crop"
+const SHEET_ID = '1wxAS87KswC_pMIpvvrQX8ZBlCxeQsugWD9vDq5MUy_4';
+
+function getSheetURL(sheetName) {
+    return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${sheetName}`;
+}
+
+function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    if (lines.length < 2) return [];
+    const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim());
+    const rows = [];
+    for (let i = 1; i < lines.length; i++) {
+        const values = [];
+        let current = '';
+        let inQuotes = false;
+        for (const ch of lines[i]) {
+            if (ch === '"') { inQuotes = !inQuotes; }
+            else if (ch === ',' && !inQuotes) { values.push(current.trim()); current = ''; }
+            else { current += ch; }
+        }
+        values.push(current.trim());
+        const row = {};
+        headers.forEach((h, idx) => { row[h] = values[idx] || ''; });
+        rows.push(row);
     }
+    return rows;
+}
+
+// Fallback data for programs (used when Google Sheets is unavailable)
+const fallbackPrograms = [
+    { year: '2018', title: 'ПРОГРАМА 2018 року', link: 'https://drive.google.com/file/d/1SQc34T_H7GbYmhbh-6OA0Nqe0bXwhyRV/view' },
+    { year: '2019', title: 'ПРОГРАМА 2019 року', link: 'https://drive.google.com/file/d/16QRQr_nfH8VLGS9qumE3RFxFqM75M5jI/view' },
+    { year: '2020', title: 'ПРОГРАМА 2020 року', link: 'https://drive.google.com/file/d/1N-B531XXOos0n_CWkuep_nzjzYwnKIRc/view' },
+    { year: '2021', title: 'ПРОГРАМА 2021 року', link: 'https://drive.google.com/file/d/1dd7z9im4HURaFM3Vq1QqIFG2w4EWZjbJ/view' },
+    { year: '2023', title: 'ПРОГРАМА 2023 року', link: 'https://drive.google.com/file/d/11MG5bQr3oxeNbA9Ta6pIFj5gch7yNlPh/view' },
+    { year: '2024', title: 'ПРОГРАМА 2024 року', link: 'https://drive.google.com/file/d/1P4eR20CDP03x9aSXFun-D_uTpWmtiGED/view' },
+    { year: '2025', title: 'ПРОГРАМА 2025 року', link: 'https://drive.google.com/file/d/1u4xXd7tRf04Fm1UbT7JqWtBwDpbaa6PG/view' },
+    { year: '2026', title: 'ПРОГРАМА 2026 року', link: 'https://drive.google.com/file/d/1iixl9tkIVrobAqN4uDBHLiBOuR3iT4MS/view' }
 ];
 
-let currentCategory = 'all';
-let searchQuery = '';
+const docIconSVG = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
+    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+    <polyline points="10 9 9 9 8 9"/>
+</svg>`;
 
-function renderCards(data) {
-    const grid = document.getElementById('cardsGrid');
-    grid.innerHTML = '';
+function renderPrograms(programs) {
+    const grid = document.getElementById('programsGrid');
+    if (!grid) return;
+    grid.innerHTML = programs.map(p => `
+        <a href="${p.link}" class="doc-card" target="_blank">
+            <div class="doc-icon">${docIconSVG}</div>
+            <h3>${p.title}</h3>
+            <span class="doc-type">.docx</span>
+        </a>
+    `).join('');
+}
 
-    data.forEach(conf => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.onclick = () => showDetail(conf.id);
-        card.innerHTML = `
-            <div class="card-img">
-                <img src="${conf.image}" alt="${conf.title}" loading="lazy">
-                <span class="card-badge">${conf.category}</span>
-            </div>
-            <div class="card-body">
-                <div class="card-title">${conf.title}</div>
-                <div class="card-desc">${conf.desc}</div>
-                <div class="card-date">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                        <line x1="16" y1="2" x2="16" y2="6"/>
-                        <line x1="8" y1="2" x2="8" y2="6"/>
-                        <line x1="3" y1="10" x2="21" y2="10"/>
-                    </svg>
-                    ${conf.date}
-                </div>
-            </div>
-        `;
-        grid.appendChild(card);
+let allCertificates = [];
+
+const certTypeNames = {
+    'students': 'Сертифікати студентів',
+    'organizers': 'Сертифікати орг.комітету',
+    'teachers': 'Сертифікати викладачів',
+    'listeners': 'Сертифікати слухачів'
+};
+
+const certIconSVG = `<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5">
+    <rect x="4" y="2" width="16" height="20" rx="2"/>
+    <line x1="8" y1="6" x2="16" y2="6"/>
+    <line x1="8" y1="10" x2="16" y2="10"/>
+    <line x1="8" y1="14" x2="12" y2="14"/>
+    <circle cx="15" cy="17" r="2"/>
+    <path d="M13.5 19L15 22l1.5-3"/>
+</svg>`;
+
+function renderCertificates(certificates) {
+    allCertificates = certificates;
+
+    const typeMap = {
+        'students': 'certStudents',
+        'organizers': 'certOrganizers',
+        'teachers': 'certTeachers',
+        'listeners': 'certListeners'
+    };
+
+    // Group by type
+    const grouped = {};
+    certificates.forEach(c => {
+        if (!grouped[c.type]) grouped[c.type] = [];
+        grouped[c.type].push(c);
     });
 
-    document.getElementById('confCount').textContent = data.length;
+    // Render each certificate group in sidebar — years link to certificate page
+    Object.keys(typeMap).forEach(type => {
+        const container = document.getElementById(typeMap[type]);
+        if (!container) return;
+        const items = grouped[type] || [];
+        if (items.length === 0) {
+            container.innerHTML = '<a href="#" style="opacity:0.5">Немає даних</a>';
+        } else {
+            // Get unique years
+            const years = [...new Set(items.map(c => c.year))].sort();
+            container.innerHTML = years
+                .map(y => `<a href="#" onclick="showCertificates('${type}', '${y}'); toggleSidebar(); return false;">${y}</a>`)
+                .join('');
+        }
+    });
 }
 
-function filterConferences() {
-    searchQuery = document.getElementById('searchInput').value.toLowerCase();
-    applyFilters();
-}
+function showCertificates(type, year) {
+    const title = certTypeNames[type] || 'Сертифікати';
+    document.getElementById('certPageTitle').textContent = title;
+    document.getElementById('certPageSubtitle').textContent = year + ' рік';
 
-function filterByCategory(category, btn) {
-    currentCategory = category;
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    applyFilters();
-}
+    const certs = allCertificates.filter(c => c.type === type && c.year === year);
+    const grid = document.getElementById('certGrid');
 
-function applyFilters() {
-    let filtered = conferences;
-
-    if (currentCategory !== 'all') {
-        filtered = filtered.filter(c => c.category === currentCategory);
+    if (certs.length === 0) {
+        grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Сертифікати не знайдені</p>';
+    } else {
+        grid.innerHTML = certs.map(c => `
+            <a href="${c.link}" class="doc-card" target="_blank">
+                <div class="doc-icon">${certIconSVG}</div>
+                <h3>${c.title || certTypeNames[type]}</h3>
+                <span class="doc-type">${c.year}</span>
+            </a>
+        `).join('');
     }
 
-    if (searchQuery) {
-        filtered = filtered.filter(c =>
-            c.title.toLowerCase().includes(searchQuery) ||
-            c.desc.toLowerCase().includes(searchQuery) ||
-            c.category.toLowerCase().includes(searchQuery) ||
-            c.authors.some(a => a.toLowerCase().includes(searchQuery)) ||
-            c.keywords.some(k => k.toLowerCase().includes(searchQuery))
-        );
+    document.querySelectorAll('main').forEach(m => m.classList.add('hidden'));
+    document.getElementById('certificatesPage').classList.remove('hidden');
+    location.hash = `certificates-${type}-${year}`;
+    window.scrollTo(0, 0);
+}
+
+let allGalleryItems = [];
+
+function renderDocPage(gridId, items) {
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+    if (items.length === 0) {
+        grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Немає даних</p>';
+        return;
+    }
+    grid.innerHTML = items.map(p => `
+        <a href="${p.link}" class="doc-card" target="_blank">
+            <div class="doc-icon">${docIconSVG}</div>
+            <h3>${p.title}</h3>
+            <span class="doc-type">.docx</span>
+        </a>
+    `).join('');
+}
+
+function renderGalleryYears(items) {
+    allGalleryItems = items;
+    const container = document.getElementById('galleryYears');
+    if (!container) return;
+    const years = [...new Set(items.map(i => i.year))].sort();
+    if (years.length === 0) {
+        container.innerHTML = '<a href="#" style="opacity:0.5">Немає даних</a>';
+    } else {
+        container.innerHTML = years
+            .map(y => `<a href="#" onclick="showGallery('${y}'); toggleSidebar(); return false;">Фото ${y} рік</a>`)
+            .join('');
+    }
+}
+
+function showGallery(year) {
+    document.getElementById('galleryPageTitle').textContent = 'Фотогалерея';
+    document.getElementById('galleryPageSubtitle').textContent = year + ' рік';
+
+    const photos = allGalleryItems.filter(i => i.year === year);
+    const grid = document.getElementById('galleryGrid');
+
+    if (photos.length === 0) {
+        grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Фото не знайдені</p>';
+    } else {
+        grid.innerHTML = photos.map(p => {
+            const imgUrl = convertDriveLink(p.link);
+            return `<img src="${imgUrl}" alt="${p.title || 'Фото ' + p.year}" onclick="openLightbox(this.src)" loading="lazy">`;
+        }).join('');
     }
 
-    renderCards(filtered);
+    document.querySelectorAll('main').forEach(m => m.classList.add('hidden'));
+    document.getElementById('galleryPage').classList.remove('hidden');
+    location.hash = `gallery-${year}`;
+    window.scrollTo(0, 0);
 }
+
+function convertDriveLink(url) {
+    // Convert Google Drive view link to direct image link
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if (match) {
+        return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+    }
+    return url;
+}
+
+function openLightbox(src) {
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = `<img src="${src}" alt="Фото">`;
+    lb.onclick = () => lb.remove();
+    document.body.appendChild(lb);
+}
+
+async function loadSheet(sheetName) {
+    try {
+        const res = await fetch(getSheetURL(sheetName));
+        if (res.ok) {
+            const text = await res.text();
+            return parseCSV(text);
+        }
+    } catch (e) {}
+    return [];
+}
+
+async function loadFromSheets() {
+    // Load all sheets in parallel
+    const [programs, certificates, zbirnyky, infoList, gallery, settings] = await Promise.all([
+        loadSheet('programs'),
+        loadSheet('certificates'),
+        loadSheet('zbirnyky'),
+        loadSheet('info_list'),
+        loadSheet('gallery'),
+        loadSheet('settings')
+    ]);
+
+    // Programs
+    renderPrograms(programs.length > 0 ? programs : fallbackPrograms);
+
+    // Certificates
+    if (certificates.length > 0) renderCertificates(certificates);
+
+    // Zbirnyky
+    renderDocPage('zbirnykyGrid', zbirnyky);
+
+    // Info list
+    renderDocPage('infoListGrid', infoList);
+
+    // Gallery
+    renderGalleryYears(gallery);
+
+    // Settings
+    const regLink = settings.find(s => s.key === 'registration_link');
+    if (regLink && regLink.value) {
+        const btn = document.getElementById('registerBtn');
+        if (btn) btn.href = regLink.value;
+    }
+
+    // Restore page from URL hash
+    restoreFromHash();
+}
+
+function restoreFromHash() {
+    const hash = location.hash.slice(1);
+    if (!hash) return;
+
+    if (hash.startsWith('certificates-')) {
+        const parts = hash.split('-');
+        const type = parts[1];
+        const year = parts[2];
+        showCertificates(type, year);
+    } else if (hash.startsWith('gallery-')) {
+        const year = hash.split('-')[1];
+        showGallery(year);
+    } else if (document.getElementById(hash)) {
+        showPage(hash);
+    }
+}
+
+window.addEventListener('hashchange', restoreFromHash);
 
 function showDetail(id) {
     const conf = conferences.find(c => c.id === id);
@@ -217,12 +302,14 @@ function showDetail(id) {
 function showHome() {
     document.querySelectorAll('main').forEach(m => m.classList.add('hidden'));
     document.getElementById('mainPage').classList.remove('hidden');
+    location.hash = '';
     window.scrollTo(0, 0);
 }
 
 function showPage(pageId) {
     document.querySelectorAll('main').forEach(m => m.classList.add('hidden'));
     document.getElementById(pageId).classList.remove('hidden');
+    location.hash = pageId;
     window.scrollTo(0, 0);
 }
 
@@ -296,5 +383,15 @@ function toggleGroup(btn) {
     submenu.classList.toggle('open');
 }
 
-// Initial render
-renderCards(conferences);
+// Hide main page immediately if navigating to another page
+if (location.hash && location.hash !== '#') {
+    const hash = location.hash.slice(1);
+    document.getElementById('mainPage').classList.add('hidden');
+    // Show simple pages right away (no data needed)
+    if (!hash.startsWith('certificates-') && !hash.startsWith('gallery-') && document.getElementById(hash)) {
+        document.getElementById(hash).classList.remove('hidden');
+    }
+}
+
+// Initial load
+loadFromSheets();

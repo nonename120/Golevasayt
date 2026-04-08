@@ -48,11 +48,8 @@
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     Сертифікати студентів
                 </button>
-                <div class="sidebar-submenu">
-                    <a href="#">2023</a>
-                    <a href="#">2024</a>
-                    <a href="#">2025</a>
-                    <a href="#">2026</a>
+                <div class="sidebar-submenu" id="certStudents">
+                    <a href="#" style="opacity:0.5">Завантаження...</a>
                 </div>
             </div>
 
@@ -61,10 +58,8 @@
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     Сертифікати орг.комітету
                 </button>
-                <div class="sidebar-submenu">
-                    <a href="#">2024</a>
-                    <a href="#">2025</a>
-                    <a href="#">2026</a>
+                <div class="sidebar-submenu" id="certOrganizers">
+                    <a href="#" style="opacity:0.5">Завантаження...</a>
                 </div>
             </div>
 
@@ -73,11 +68,8 @@
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     Сертифікати викладачів
                 </button>
-                <div class="sidebar-submenu">
-                    <a href="#">2023</a>
-                    <a href="#">2024</a>
-                    <a href="#">2025</a>
-                    <a href="#">2026</a>
+                <div class="sidebar-submenu" id="certTeachers">
+                    <a href="#" style="opacity:0.5">Завантаження...</a>
                 </div>
             </div>
 
@@ -86,27 +78,21 @@
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     Сертифікати слухачів
                 </button>
-                <div class="sidebar-submenu">
-                    <a href="#">2023</a>
-                    <a href="#">2024</a>
-                    <a href="#">2025</a>
-                    <a href="#">2026</a>
+                <div class="sidebar-submenu" id="certListeners">
+                    <a href="#" style="opacity:0.5">Завантаження...</a>
                 </div>
             </div>
 
-            <a href="#" class="sidebar-link">Збірники</a>
-            <a href="#" class="sidebar-link">Інформаційний лист</a>
+            <a href="#" class="sidebar-link" onclick="showPage('zbirnykyPage'); toggleSidebar(); return false;">Збірники</a>
+            <a href="#" class="sidebar-link" onclick="showPage('infoListPage'); toggleSidebar(); return false;">Інформаційний лист</a>
 
             <div class="sidebar-group">
                 <button class="sidebar-toggle" onclick="toggleGroup(this)">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     Фотогалерея
                 </button>
-                <div class="sidebar-submenu">
-                    <a href="#">2023</a>
-                    <a href="#">2024</a>
-                    <a href="#">2025</a>
-                    <a href="#">2026</a>
+                <div class="sidebar-submenu" id="galleryYears">
+                    <a href="#" style="opacity:0.5">Завантаження...</a>
                 </div>
             </div>
         </nav>
@@ -120,10 +106,12 @@
             <h1 class="hero-title">Архів афіш</h1>
             <p class="hero-subtitle">наукових конференцій Вінниці</p>
             <p class="hero-desc">Збирай знання. Досліджуй ідеї. Надихай майбутнє.</p>
-            <a href="#" class="register-btn" onclick="openRegistration(); return false;">
+            <a href="#" id="registerBtn" class="register-btn" target="_blank">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="3"/>
-                    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+                    <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/>
+                    <circle cx="8.5" cy="7" r="4"/>
+                    <line x1="20" y1="8" x2="20" y2="14"/>
+                    <line x1="23" y1="11" x2="17" y2="11"/>
                 </svg>
                 Зареєструватися на конференцію
             </a>
@@ -181,111 +169,8 @@
                 Назад
             </a>
             <h1 class="page-title">Програми</h1>
-            <div class="doc-grid">
-                <a href="https://drive.google.com/file/d/1SQc34T_H7GbYmhbh-6OA0Nqe0bXwhyRV/view" class="doc-card" target="_blank">
-                    <div class="doc-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>ПРОГРАМА 2018 року</h3>
-                    <span class="doc-type">.docx</span>
-                </a>
-                <a href="https://drive.google.com/file/d/16QRQr_nfH8VLGS9qumE3RFxFqM75M5jI/view" class="doc-card" target="_blank">
-                    <div class="doc-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>ПРОГРАМА 2019 року</h3>
-                    <span class="doc-type">.docx</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1N-B531XXOos0n_CWkuep_nzjzYwnKIRc/view" class="doc-card" target="_blank">
-                    <div class="doc-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>ПРОГРАМА 2020 року</h3>
-                    <span class="doc-type">.docx</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1dd7z9im4HURaFM3Vq1QqIFG2w4EWZjbJ/view" class="doc-card" target="_blank">
-                    <div class="doc-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>ПРОГРАМА 2021 року</h3>
-                    <span class="doc-type">.docx</span>
-                </a>
-                <a href="https://drive.google.com/file/d/11MG5bQr3oxeNbA9Ta6pIFj5gch7yNlPh/view" class="doc-card" target="_blank">
-                    <div class="doc-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>ПРОГРАМА 2023 року</h3>
-                    <span class="doc-type">.docx</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1P4eR20CDP03x9aSXFun-D_uTpWmtiGED/view" class="doc-card" target="_blank">
-                    <div class="doc-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>ПРОГРАМА 2024 року</h3>
-                    <span class="doc-type">.docx</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1u4xXd7tRf04Fm1UbT7JqWtBwDpbaa6PG/view" class="doc-card" target="_blank">
-                    <div class="doc-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>ПРОГРАМА 2025 року</h3>
-                    <span class="doc-type">.docx</span>
-                </a>
-                <a href="https://drive.google.com/file/d/1iixl9tkIVrobAqN4uDBHLiBOuR3iT4MS/view" class="doc-card" target="_blank">
-                    <div class="doc-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>ПРОГРАМА 2026 року</h3>
-                    <span class="doc-type">.docx</span>
-                </a>
+            <div class="doc-grid" id="programsGrid">
+                <!-- Programs loaded dynamically from Google Sheets -->
             </div>
         </div>
     </main>
@@ -401,6 +286,72 @@
                         <p id="detailOrganizer"></p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Zbirnyky Page -->
+    <main id="zbirnykyPage" class="hidden">
+        <div class="page-container">
+            <a href="#" class="back-link" onclick="showHome(); return false;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Назад
+            </a>
+            <h1 class="page-title">Збірники</h1>
+            <div class="doc-grid" id="zbirnykyGrid">
+            </div>
+        </div>
+    </main>
+
+    <!-- Info List Page -->
+    <main id="infoListPage" class="hidden">
+        <div class="page-container">
+            <a href="#" class="back-link" onclick="showHome(); return false;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Назад
+            </a>
+            <h1 class="page-title">Інформаційний лист</h1>
+            <div class="doc-grid" id="infoListGrid">
+            </div>
+        </div>
+    </main>
+
+    <!-- Gallery Page -->
+    <main id="galleryPage" class="hidden">
+        <div class="page-container">
+            <a href="#" class="back-link" onclick="showHome(); return false;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Назад
+            </a>
+            <h1 class="page-title" id="galleryPageTitle">Фотогалерея</h1>
+            <p class="page-subtitle" id="galleryPageSubtitle"></p>
+            <div class="gallery-grid" id="galleryGrid">
+            </div>
+        </div>
+    </main>
+
+    <!-- Certificates Page -->
+    <main id="certificatesPage" class="hidden">
+        <div class="page-container">
+            <a href="#" class="back-link" onclick="showHome(); return false;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Назад
+            </a>
+            <h1 class="page-title" id="certPageTitle">Сертифікати</h1>
+            <p class="page-subtitle" id="certPageSubtitle"></p>
+            <div class="doc-grid" id="certGrid">
             </div>
         </div>
     </main>
