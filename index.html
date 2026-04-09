@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Наукові конференції — Архів афіш</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -12,11 +13,7 @@
     <header class="header">
         <div class="header-container">
             <a href="#" class="logo" onclick="showHome(); return false;">
-                <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
-                    <path d="M4 28 Q10 12 16 28" stroke="white" stroke-width="2.5" fill="none"/>
-                    <path d="M12 28 Q18 12 24 28" stroke="white" stroke-width="2.5" fill="none"/>
-                    <path d="M20 28 Q26 12 32 28" stroke="white" stroke-width="2.5" fill="none"/>
-                </svg>
+                <img class="logo-icon" src="logo-up.png" alt="Лого" width="36" height="36">
                 <span>Наукові конференції</span>
             </a>
             <nav class="nav">
@@ -103,9 +100,9 @@
         <!-- Hero Section -->
         <section class="hero">
           <div class="hero-inner">
-            <h1 class="hero-title">Архів афіш</h1>
-            <p class="hero-subtitle">наукових конференцій Вінниці</p>
-            <p class="hero-desc">Збирай знання. Досліджуй ідеї. Надихай майбутнє.</p>
+            <h1 class="hero-title">НАУКОВО - ПРАКТИЧНА КРАЄЗНАВЧА ВИКЛАДАЦЬКО-СТУДЕНТСЬКА КОНФЕРЕНЦІЯ</h1>
+            <p class="hero-subtitle">«МОЯ УКРАЇНА: ІСТОРІЯ ТА СЬОГОДЕННЯ»</p>
+            <p class="hero-desc">для викладачів та студентів закладів фахової передвищої освіти Вінницької області</p>
             <a href="#" id="registerBtn" class="register-btn" target="_blank">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/>
@@ -187,20 +184,7 @@
             </a>
             <h1 class="page-title">Положення</h1>
             <p class="page-subtitle">Про науково-практичну краєзнавчу конференцію «Моя Україна: історія та сьогодення»</p>
-            <div class="doc-grid doc-grid-single">
-                <a href="https://drive.google.com/file/d/1_euISKyCflYIv05pR-IAqoasKnXOSME4/view" class="doc-card" target="_blank">
-                    <div class="doc-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="1.5">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                    </div>
-                    <h3>ПОЛОЖЕННЯ</h3>
-                    <span class="doc-type">.docx</span>
-                </a>
+            <div class="doc-grid" id="polozhennyaGrid">
             </div>
         </div>
     </main>
@@ -351,7 +335,7 @@
             </a>
             <h1 class="page-title" id="certPageTitle">Сертифікати</h1>
             <p class="page-subtitle" id="certPageSubtitle"></p>
-            <div class="doc-grid" id="certGrid">
+            <div class="gallery-grid" id="certGrid">
             </div>
         </div>
     </main>
@@ -425,32 +409,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <a href="#" class="logo" onclick="showHome(); return false;">
-                    <svg class="logo-icon" viewBox="0 0 40 40" width="32" height="32">
-                        <path d="M4 28 Q10 12 16 28" stroke="white" stroke-width="2.5" fill="none"/>
-                        <path d="M12 28 Q18 12 24 28" stroke="white" stroke-width="2.5" fill="none"/>
-                        <path d="M20 28 Q26 12 32 28" stroke="white" stroke-width="2.5" fill="none"/>
-                    </svg>
-                    <span>Наукові конференції</span>
-                </a>
-                <p class="footer-desc">Цифровий архів наукових заходів міста Вінниці</p>
-            </div>
-            <div class="footer-col">
-                <h4>Посилання</h4>
-                <a href="#">Про проект</a>
-                <a href="#" onclick="showHome(); return false;">Архів</a>
-                <a href="#">Контакти</a>
-            </div>
-            <div class="footer-col">
-                <h4>Контакти</h4>
-                <p>Вінниця, Україна</p>
-                <p>info@conferences.vn.ua</p>
-            </div>
-        </div>
         <div class="footer-bottom">
-            &copy; 2026 Архів наукових конференцій. Всі права захищені.
+            &copy; Наукові конференції. Всі права захищені.
         </div>
     </footer>
 

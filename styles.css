@@ -58,6 +58,10 @@ a {
     font-weight: 700;
 }
 
+.logo-icon {
+    object-fit: cover;
+}
+
 .nav {
     display: flex;
     align-items: center;
@@ -264,9 +268,10 @@ a {
 }
 
 .hero-title {
-    font-size: 56px;
+    font-size: 36px;
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.2;
+    text-transform: uppercase;
 }
 
 .hero-subtitle {
@@ -987,11 +992,11 @@ a {
     }
 
     .hero-title {
-        font-size: 32px;
+        font-size: 22px;
     }
 
     .hero-subtitle {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .hero-desc {
@@ -1137,11 +1142,11 @@ a {
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 26px;
+        font-size: 18px;
     }
 
     .hero-subtitle {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .slide {

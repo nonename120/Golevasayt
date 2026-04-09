@@ -121,13 +121,25 @@ function showCertificates(type, year) {
     if (certs.length === 0) {
         grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Сертифікати не знайдені</p>';
     } else {
-        grid.innerHTML = certs.map(c => `
-            <a href="${c.link}" class="doc-card" target="_blank">
-                <div class="doc-icon">${certIconSVG}</div>
-                <h3>${c.title || certTypeNames[type]}</h3>
-                <span class="doc-type">${c.year}</span>
-            </a>
-        `).join('');
+        const yearNum = parseInt(year);
+        if (yearNum >= 2025) {
+            // 2025+ — показываем как фото
+            grid.className = 'gallery-grid';
+            grid.innerHTML = certs.map(c => {
+                const imgUrl = convertDriveLink(c.link);
+                return `<img src="${imgUrl}" alt="${c.title || 'Сертифікат'}" onclick="openLightbox(this.src)" loading="lazy">`;
+            }).join('');
+        } else {
+            // 2023-2024 — показываем как карточки документов
+            grid.className = 'doc-grid';
+            grid.innerHTML = certs.map(c => `
+                <a href="${c.link}" class="doc-card" target="_blank">
+                    <div class="doc-icon">${certIconSVG}</div>
+                    <h3>${c.title || certTypeNames[type]}</h3>
+                    <span class="doc-type">${c.year}</span>
+                </a>
+            `).join('');
+        }
     }
 
     document.querySelectorAll('main').forEach(m => m.classList.add('hidden'));
@@ -220,13 +232,14 @@ async function loadSheet(sheetName) {
 
 async function loadFromSheets() {
     // Load all sheets in parallel
-    const [programs, certificates, zbirnyky, infoList, gallery, settings] = await Promise.all([
+    const [programs, certificates, zbirnyky, infoList, gallery, settings, polozhennya] = await Promise.all([
         loadSheet('programs'),
         loadSheet('certificates'),
         loadSheet('zbirnyky'),
         loadSheet('info_list'),
         loadSheet('gallery'),
-        loadSheet('settings')
+        loadSheet('settings'),
+        loadSheet('polozhennya')
     ]);
 
     // Programs
@@ -243,6 +256,10 @@ async function loadFromSheets() {
 
     // Gallery
     renderGalleryYears(gallery);
+
+    // Polozhennya
+    const fallbackPolozhennya = [{ year: '', title: 'ПОЛОЖЕННЯ', link: 'https://drive.google.com/file/d/1_euISKyCflYIv05pR-IAqoasKnXOSME4/view' }];
+    renderDocPage('polozhennyaGrid', polozhennya.length > 0 ? polozhennya : fallbackPolozhennya);
 
     // Settings
     const regLink = settings.find(s => s.key === 'registration_link');
