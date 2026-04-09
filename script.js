@@ -410,5 +410,59 @@ if (location.hash && location.hash !== '#') {
     }
 }
 
+// Touch swipe for slider
+(function() {
+    const slider = document.getElementById('slider');
+    if (!slider) return;
+    let startX = 0, startY = 0, diffX = 0;
+    slider.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+    slider.addEventListener('touchmove', e => {
+        diffX = e.touches[0].clientX - startX;
+    }, { passive: true });
+    slider.addEventListener('touchend', () => {
+        if (Math.abs(diffX) > 50) {
+            changeSlide(diffX > 0 ? -1 : 1);
+        }
+        diffX = 0;
+    });
+})();
+
+// Touch swipe to open/close sidebar
+(function() {
+    let startX = 0, diffX = 0, tracking = false;
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    // Swipe right from left edge to open
+    document.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+        if (startX < 30 && !sidebar.classList.contains('open')) {
+            tracking = true;
+        }
+        if (sidebar.classList.contains('open')) {
+            tracking = true;
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', e => {
+        if (!tracking) return;
+        diffX = e.touches[0].clientX - startX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', () => {
+        if (!tracking) { diffX = 0; return; }
+        if (!sidebar.classList.contains('open') && diffX > 70) {
+            toggleSidebar();
+        } else if (sidebar.classList.contains('open') && diffX < -70) {
+            toggleSidebar();
+        }
+        diffX = 0;
+        tracking = false;
+    });
+})();
+
 // Initial load
 loadFromSheets();
